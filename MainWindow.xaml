@@ -1,0 +1,376 @@
+﻿<Window x:Class="Windowshop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vlc="clr-namespace:LibVLCSharp.WPF;assembly=LibVLCSharp.WPF"
+        xmlns:local="clr-namespace:Windowshop"
+        mc:Ignorable="d"
+        Title="Windowshop" Height="600" Width="1000"
+        ResizeMode="NoResize"
+        Icon="/Resources/windowshop-preview.ico">
+
+    <Window.Resources>
+        <FontFamily x:Key="TungstenBold">pack://application:,,,/Resources/Tungsten-Bold.ttf#Tungsten Bold</FontFamily>
+        <FontFamily x:Key="DINNextRegular">pack://application:,,,/Resources/DIN-Next-Regular.otf#DIN Next W1G</FontFamily>
+        <FontFamily x:Key="DINNextMedium">pack://application:,,,/Resources/DIN-Next-Medium.otf#DIN Next W1G Medium</FontFamily>
+        <FontFamily x:Key="DINNextLight">pack://application:,,,/Resources/DIN-Next-Light.otf#DIN Next W1G Light</FontFamily>
+
+        <Style x:Key="ItemButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2027ddaf"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="WatchVideoButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#60000000"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#40000000"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <!-- MAIN STORE GRID START -->
+        <Grid Visibility="Visible" x:Name="StoreGrid">
+
+
+            <Image Source="/Resources/background.png" 
+                   Stretch="UniformToFill" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+
+            <Grid Grid.Column="0" Margin="0,71,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="0" Grid.Column="0" Padding="10">
+                    <Border BorderThickness="2" BorderBrush="LightSlateGray">
+                        <Grid>
+                            <Rectangle Fill="#15FFFFFF"/>
+
+                            <Image Source="{Binding Item1RarityImg, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="-55,-11,0,-110" Width="340" Opacity="0.25">
+                                <Image.Clip>
+                                    <RectangleGeometry Rect="55,0,500,230"/>
+                                </Image.Clip>
+                            </Image>
+
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" x:Name="Item1Gradient">
+                                        <GradientStop Color="#00000000" Offset="0.3" />
+                                        <GradientStop Color="#FF000000" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Image Source="{Binding Item1Img, UpdateSourceTrigger=PropertyChanged}" Margin="30"/>
+
+                            <TextBlock Text="{Binding Item1NameText, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="18" FontFamily="{DynamicResource DINNextMedium}" Foreground="White" Margin="7,0,0,3"/>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,3,-5,0">
+                                <Image Source="/Resources/vp.png" Width="20" Height="20" Margin="0,0,0,0"/>
+                                <TextBlock Text="{Binding Item1PriceText, UpdateSourceTrigger=PropertyChanged}" FlowDirection="RightToLeft" FontSize="18" FontFamily="{DynamicResource DINNextLight}" Foreground="White" Height="23" Width="47">
+
+                                </TextBlock>
+                                <Image Source="{Binding Item1RarityImg, UpdateSourceTrigger=PropertyChanged}" Width="46" Height="27"/>
+                            </StackPanel>
+
+                            <Button Click="EnterItemViewGrid" Style="{StaticResource ItemButtonStyle}" Tag="0"/>
+
+
+
+                        </Grid>
+                    </Border>
+                </Border>
+                <Border Grid.Row="0" Grid.Column="1" Padding="10">
+                    <Border BorderThickness="2" BorderBrush="LightSlateGray">
+                        <Grid>
+                            <Rectangle Fill="#15FFFFFF">
+                            </Rectangle>
+
+                            <Image Source="{Binding Item2RarityImg, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="-55,-11,0,-110" Width="340" Opacity="0.25">
+                                <Image.Clip>
+                                    <RectangleGeometry Rect="55,0,500,230"/>
+                                </Image.Clip>
+                            </Image>
+
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" x:Name="Item2Gradient">
+                                        <GradientStop Color="#00000000" Offset="0.3" />
+                                        <GradientStop Color="#FF000000" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Image Source="{Binding Item2Img, UpdateSourceTrigger=PropertyChanged}" Margin="30"/>
+                            <TextBlock Text="{Binding Item2NameText, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="18" FontFamily="{DynamicResource DINNextMedium}" Foreground="White" Margin="7,0,0,3">
+
+                            </TextBlock>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,3,-5,0">
+                                <Image Source="/Resources/vp.png" Width="20" Height="20" Margin="0,0,0,0"/>
+                                <TextBlock Text="{Binding Item2PriceText, UpdateSourceTrigger=PropertyChanged}" FlowDirection="RightToLeft" FontSize="18" FontFamily="{DynamicResource DINNextLight}" Foreground="White" Height="23" Width="47">
+
+                                </TextBlock>
+                                <Image Source="{Binding Item2RarityImg, UpdateSourceTrigger=PropertyChanged}" Width="46" Height="27"/>
+                            </StackPanel>
+
+                            <Button Click="EnterItemViewGrid" Style="{StaticResource ItemButtonStyle}" Tag="1"/>
+
+                        </Grid>
+                    </Border>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="0" Padding="10">
+                    <Border BorderThickness="2" BorderBrush="LightSlateGray">
+                        <Grid>
+                            <Rectangle Fill="#15FFFFFF">
+                            </Rectangle>
+
+                            <Image Source="{Binding Item3RarityImg, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="-55,-11,0,-110" Width="340" Opacity="0.25">
+                                <Image.Clip>
+                                    <RectangleGeometry Rect="55,0,500,230"/>
+                                </Image.Clip>
+                            </Image>
+
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" x:Name="Item3Gradient">
+                                        <GradientStop Color="#00000000" Offset="0.3" />
+                                        <GradientStop Color="#FF000000" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Image Source="{Binding Item3Img, UpdateSourceTrigger=PropertyChanged}" Margin="30"/>
+                            <TextBlock Text="{Binding Item3NameText, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="18" FontFamily="{DynamicResource DINNextMedium}" Foreground="White" Margin="7,0,0,3">
+
+                            </TextBlock>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,3,-5,0">
+                                <Image Source="/Resources/vp.png" Width="20" Height="20" Margin="0,0,0,0"/>
+                                <TextBlock Text="{Binding Item3PriceText, UpdateSourceTrigger=PropertyChanged}" FlowDirection="RightToLeft" FontSize="18" FontFamily="{DynamicResource DINNextLight}" Foreground="White" Height="23" Width="47">
+
+                                </TextBlock>
+                                <Image Source="{Binding Item3RarityImg, UpdateSourceTrigger=PropertyChanged}" Width="46" Height="27"/>
+                            </StackPanel>
+
+                            <Button Click="EnterItemViewGrid" Style="{StaticResource ItemButtonStyle}" Tag="2"/>
+
+                        </Grid>
+                    </Border>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="1" Padding="10">
+                    <Border BorderThickness="2" BorderBrush="LightSlateGray">
+                        <Grid>
+                            <Rectangle Fill="#15FFFFFF">
+                            </Rectangle>
+
+                            <Image Source="{Binding Item4RarityImg, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="-55,-11,0,-110" Width="340" Opacity="0.25">
+                                <Image.Clip>
+                                    <RectangleGeometry Rect="55,0,500,230"/>
+                                </Image.Clip>
+                            </Image>
+
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" x:Name="Item4Gradient">
+                                        <GradientStop Color="#00000000" Offset="0.3" />
+                                        <GradientStop Color="#FF000000" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Image Source="{Binding Item4Img, UpdateSourceTrigger=PropertyChanged}" Margin="30"/>
+                            <TextBlock Text="{Binding Item4NameText, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="18" FontFamily="{DynamicResource DINNextMedium}" Foreground="White" Margin="7,0,0,3">
+
+                            </TextBlock>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,3,-5,0">
+                                <Image Source="/Resources/vp.png" Width="20" Height="20" Margin="0,0,0,0"/>
+                                <TextBlock Text="{Binding Item4PriceText, UpdateSourceTrigger=PropertyChanged}" FlowDirection="RightToLeft" FontSize="18" FontFamily="{DynamicResource DINNextLight}" Foreground="White" Height="23" Width="47">
+
+                                </TextBlock>
+                                <Image Source="{Binding Item4RarityImg, UpdateSourceTrigger=PropertyChanged}" Width="46" Height="27"/>
+                            </StackPanel>
+
+                            <Button Click="EnterItemViewGrid" Style="{StaticResource ItemButtonStyle}" Tag="3"/>
+
+                        </Grid>
+                    </Border>
+                </Border>
+            </Grid>
+
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="55" FontFamily="{DynamicResource TungstenBold}" Foreground="White" Margin="0,-5,0,0">
+                STORE
+            </TextBlock>
+            <TextBlock Text="{Binding ShopTimerSec, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" FontFamily="{DynamicResource DINNextRegular}" Foreground="#27ddaf" Margin="0,53,0,0">
+
+            </TextBlock>
+
+
+
+        </Grid>
+        <!-- MAIN STORE GRID END -->
+
+        <!-- ITEM VIEW GRID START -->
+        <Grid Visibility="Visible" x:Name="ItemViewGrid">
+            <Image Source="/Resources/background.png" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button Click="LeaveItemViewGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource WatchVideoButtonStyle}" Width="44" Height="44" Margin="15">
+                <Button.Content>
+                    <TextBlock Text="X" FontSize="20" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button.Content>
+            </Button>
+
+            <RichTextBox HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent" BorderThickness="0" IsReadOnly="True" Width="800" Height="100" Margin="0,40,0,0">
+                <FlowDocument TextAlignment="Center">
+                    <Paragraph Margin="0" Padding="0">
+                        <Image Source="{Binding ItemViewRarityImg, UpdateSourceTrigger=PropertyChanged}" Width="47" Height="30" Margin="0,0,0,5"/>
+                        <Run Text="{Binding ItemViewName, UpdateSourceTrigger=PropertyChanged}" FontSize="55" FontFamily="{DynamicResource TungstenBold}" Foreground="White"/>
+                    </Paragraph>
+                    <Paragraph Margin="0" Padding="0">
+                        <Run Text="{Binding ItemViewDescription, UpdateSourceTrigger=PropertyChanged}" FontSize="18" FontFamily="{DynamicResource DINNextMedium}" Foreground="SlateGray"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+
+            <Grid Margin="0,80,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="0" Grid.Column="0">
+                    <Grid Margin="50,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="140" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel x:Name="ChromaList" Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                            <Button Width="44" Height="44" Margin="0,0,12,0">
+                                <Button.Content>
+                                    <Image Source="/Resources/swatch.png"/>
+                                </Button.Content>
+                            </Button>
+
+                            <Button Width="44" Height="44" Margin="0,0,12,0">
+                                <Button.Content>
+                                    <Image Source="/Resources/swatch.png"/>
+                                </Button.Content>
+                            </Button>
+
+                            <Button Width="44" Height="44" Margin="0,0,12,0">
+                                <Button.Content>
+                                    <Image Source="/Resources/swatch.png"/>
+                                </Button.Content>
+                            </Button>
+
+                            <Button Width="44" Height="44" Margin="0,0,12,0">
+                                <Button.Content>
+                                    <Image Source="/Resources/swatch.png"/>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+
+                        <StackPanel x:Name="LevelList" Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10">
+                            <Button Width="240" Height="50" Background="Transparent" BorderThickness="0" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                                <Border Background="#60575757">
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0">
+                                        <TextBlock Text="LEVEL 5" Foreground="White" FontSize="12" FontFamily="{DynamicResource DINNextLight}" Margin="0,0,0,1"/>
+                                        <TextBlock Text="AIM BOT" Foreground="#9BC8C2" FontSize="12" FontFamily="{DynamicResource DINNextRegular}"/>
+                                    </StackPanel>
+                                </Border>
+                            </Button>
+                            <Button Width="240" Height="50" Background="Transparent" BorderThickness="0" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0,8,0,0">
+                                <Border Background="#60575757">
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0">
+                                        <TextBlock Text="LEVEL 4" Foreground="White" FontSize="12" FontFamily="{DynamicResource DINNextLight}" Margin="0,0,0,1"/>
+                                        <TextBlock Text="ESP" Foreground="#9BC8C2" FontSize="12" FontFamily="{DynamicResource DINNextRegular}"/>
+                                    </StackPanel>
+                                </Border>
+                            </Button>
+                        </StackPanel>
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="0" Grid.Column="1">
+                    <Image Source="{Binding ItemViewImg, UpdateSourceTrigger=PropertyChanged}" Margin="30" Height="300"/>
+                    <!--<Image Source="Resources/skin_test.png" Margin="30" Height="300"/>-->
+                </Border>
+
+
+            </Grid>
+
+            <Button x:Name="WatchVideoButton" Click="WatchVideo" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="200" Height="50" Style="{StaticResource WatchVideoButtonStyle}" Margin="550,0,0,50">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Resources/watch_icon.png" Width="32" Height="32" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <TextBlock Text="WATCH VIDEO" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontFamily="{DynamicResource DINNextRegular}" Foreground="White"/>
+                </StackPanel>
+            </Button>
+
+        </Grid>
+        <!-- ITEM VIEW GRID END -->
+
+        <!-- VIDEO GRID START -->
+        <Grid Visibility="Hidden" x:Name="VideoGrid">
+            <Rectangle Fill="#A0000000"/>
+            <Rectangle Fill="#000000" HorizontalAlignment="Center" VerticalAlignment="Center" Width="854" Height="480"/>
+            <vlc:VideoView x:Name="VideoView" HorizontalAlignment="Center" VerticalAlignment="Center" Width="854" Height="480">
+                <vlc:VideoView.Content>
+                    <StackPanel x:Name="VideoControlsPanel" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">
+                        <Button Click="PlayVideo" Style="{StaticResource WatchVideoButtonStyle}" Width="40" Height="40" Margin="0,0,10,0">
+                            <Button.Content>
+                                <TextBlock Text="▶" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Button.Content>
+                        </Button>
+                        <Button Click="PauseVideo" Style="{StaticResource WatchVideoButtonStyle}" Width="40" Height="40" Margin="0,0,10,0">
+                            <Button.Content>
+                                <TextBlock Text="II" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Button.Content>
+                        </Button>
+                        <Button Click="CloseVideo" Style="{StaticResource WatchVideoButtonStyle}" Width="40" Height="40" Margin="0,0,10,0">
+                            <Button.Content>
+                                <TextBlock Text="⏹" FontSize="22" FontFamily="Segoe UI Symbol" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </vlc:VideoView.Content>
+            </vlc:VideoView>
+            
+        </Grid>
+        <!-- VIDEO GRID END -->
+
+
+
+
+    </Grid>
+</Window>
