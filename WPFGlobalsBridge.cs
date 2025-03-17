@@ -29,6 +29,7 @@ namespace Windowshop
         private string shopTimerSec = "Loading...";
 
         private string loadingScreenStatus = "Starting...";
+        private string loadingScreenVersionString = "Version " + WindowshopGlobals.version;
 
         private BitmapImage item1Img = Util.LoadLocalImage("/Resources/no_item_placeholder.png");
         private BitmapImage item2Img = Util.LoadLocalImage("/Resources/no_item_placeholder.png");
@@ -58,6 +59,11 @@ namespace Windowshop
         {
             get { return loadingScreenStatus; }
             set { loadingScreenStatus = value; OnPropertyChanged(nameof(LoadingScreenStatus)); }
+        }
+        public string LoadingScreenVersionString
+        {
+            get { return loadingScreenVersionString; }
+            set { loadingScreenVersionString = value; OnPropertyChanged(nameof(LoadingScreenVersionString)); }
         }
 
         public string Item1NameText

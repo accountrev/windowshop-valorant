@@ -9,6 +9,9 @@ namespace Windowshop
 {
     public static class WindowshopGlobals
     {
+        public static string version = "1.0.0";
+
+
         // Main window reference
         public static MainWindow mainWindow;
         public static LoadingScreen loadingScreen;

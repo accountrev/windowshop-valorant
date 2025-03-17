@@ -8,7 +8,7 @@
         Title="Windowshop" Height="500" Width="800"
         ResizeMode="NoResize"
         Icon="/Resources/windowshop-preview.ico">
-    <Grid>
+    <Grid x:Name="LoadingScreenGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="141*"/>
             <RowDefinition Height="343*"/>
@@ -16,16 +16,11 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/background_generic.png" />
         </Grid.Background>
-        <Image Source="/Resources/windowshop-preview.ico" HorizontalAlignment="Center" VerticalAlignment="Top" Height="70" Margin="0,145,0,0" Grid.RowSpan="2"/>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="55" Foreground="White" Margin="0,70,0,0" Grid.Row="1">
+        <Image Source="/Resources/windowshop-preview.ico" HorizontalAlignment="Center" VerticalAlignment="Top" Height="70" Margin="0,15,0,0" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="55" Foreground="White" Margin="0,85,0,0" Grid.Row="1">
             Windowshop
         </TextBlock>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" Foreground="White" Margin="0,137,0,0" Grid.Row="1">
-            Preview Version
-        </TextBlock>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Foreground="White" Margin="0,7,0,0">
-            Version is subject to change
-        </TextBlock>
+        <TextBlock Text="{Binding LoadingScreenVersionString, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="White" Grid.Row="1"/>
         <TextBlock Text="{Binding LoadingScreenStatus, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Foreground="White" Margin="0,255,0,0" Grid.Row="1">
         </TextBlock>
 
