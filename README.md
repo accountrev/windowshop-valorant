@@ -14,9 +14,9 @@ This project is not affiliated with Riot Games or the official game in any way. 
 
 # Installation
 1. Download the latest release from the Releases tab.
-2. Launch Windowshop.exe
+2. Extract and launch Windowshop.exe. You may need to also get passed the Windows Defender SmartScreen and install .NET 8 when prompted.
 3. Log in using your Riot Games account.
-4. All set!
+4. Done.
 
 
 # Licenses
