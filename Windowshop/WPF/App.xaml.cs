@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using Windowshop.Auth;
+using Windowshop.Helpers;
 using File = System.IO.File;
 
 namespace Windowshop

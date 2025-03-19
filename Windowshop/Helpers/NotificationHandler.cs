@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Windows.Storage;
 
-namespace Windowshop
+namespace Windowshop.Helpers
 {
     class NotificationHandler
     {

@@ -7,8 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Windowshop.Utility;
 
-namespace Windowshop
+namespace Windowshop.Helpers
 {
     class AuthUpdater
     {
@@ -20,7 +21,7 @@ namespace Windowshop
             {
                 await Task.Delay(30 * 60000);
 
-                await Util.RefreshToken();
+                await WindowshopUtil.RefreshToken();
             }
         }
     }

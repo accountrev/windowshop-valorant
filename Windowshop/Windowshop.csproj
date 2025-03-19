@@ -11,7 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\ace.wav" />
+    <None Remove="RESET AUTOSTART SETTINGS.bat" />
+    <None Remove="RESET WINDOWSHOP DATA.bat" />
     <None Remove="Resources\background.png" />
     <None Remove="Resources\background_generic.png" />
     <None Remove="Resources\Deluxe_Edition.png" />
@@ -19,10 +20,6 @@
     <None Remove="Resources\DIN-Next-Medium.otf" />
     <None Remove="Resources\DIN-Next-Regular.otf" />
     <None Remove="Resources\Exclusive_Edition.png" />
-    <None Remove="Resources\kill1.wav" />
-    <None Remove="Resources\kill2.wav" />
-    <None Remove="Resources\kill3.wav" />
-    <None Remove="Resources\kill4.wav" />
     <None Remove="Resources\no_tier_placeholder.png" />
     <None Remove="Resources\Premium_Edition.png" />
     <None Remove="Resources\Rectangle_480x240x2.png" />
@@ -51,6 +48,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="RESET AUTOSTART SETTINGS.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RESET WINDOWSHOP DATA.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -110,9 +113,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\ace.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Resource Include="Resources\DIN-Next-Regular.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -122,18 +122,6 @@
     <Resource Include="Resources\DIN-Next-Medium.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Content Include="Resources\kill1.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\kill2.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\kill3.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\kill4.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>

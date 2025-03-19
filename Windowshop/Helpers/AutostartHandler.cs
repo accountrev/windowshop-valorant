@@ -2,11 +2,10 @@
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
-
 using File = System.IO.File;
 using MessageBox = System.Windows.MessageBox;
 
-namespace Windowshop
+namespace Windowshop.Helpers
 {
     internal class AutostartHandler
     {
@@ -37,7 +36,7 @@ namespace Windowshop
                 {
                     if (!File.Exists(startupFolderPath + @"\Windowshop.lnk") && !isStartupLaunch)
                     {
-                        var result = System.Windows.MessageBox.Show(
+                        var result = MessageBox.Show(
                             "Would you like Windowshop to launch when you start up your computer? This feature can be turned off if you change your mind.",
                             "Windowshop",
                             MessageBoxButton.YesNo

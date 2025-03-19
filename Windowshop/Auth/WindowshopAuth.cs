@@ -10,8 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Windowshop.Helpers;
 
-namespace Windowshop
+namespace Windowshop.Auth
 {
     internal partial class WindowshopAuth
     {
@@ -106,7 +107,7 @@ namespace Windowshop
                 webView.CoreWebView2.NavigationCompleted += CoreWebView2_NavigationCompleted;
                 webView.CoreWebView2.WebResourceResponseReceived += CoreWebView2_WebResourceResponseReceived;
                 webView.CoreWebView2.Navigate("https://auth.riotgames.com/authorize?redirect_uri=https%3A%2F%2Fplayvalorant.com%2Fopt_in&client_id=play-valorant-web-prod&response_type=token%20id_token&nonce=1&scope=account%20openid");
-                
+
             };
 
             Application.Run(form);

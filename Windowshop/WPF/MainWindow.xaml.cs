@@ -23,6 +23,8 @@ using Color = System.Windows.Media.Color;
 using Orientation = System.Windows.Controls.Orientation;
 using FontFamily = System.Windows.Media.FontFamily;
 using LibVLCSharp.Shared;
+using Windowshop.WPF;
+using Windowshop.Utility;
 
 namespace Windowshop
 {
@@ -188,9 +190,9 @@ namespace Windowshop
                     ChromaList.Children.Clear();
                     LevelList.Children.Clear();
 
-                    if (Util.AcquireChromaCountOfSkin(WindowshopGlobals.rawShopItems[WindowshopGlobals.itemSelected]) > 1)
+                    if (WindowshopUtil.AcquireChromaCountOfSkin(WindowshopGlobals.rawShopItems[WindowshopGlobals.itemSelected]) > 1)
                     {
-                        for (int i =0; i < Util.AcquireChromaCountOfSkin(WindowshopGlobals.rawShopItems[WindowshopGlobals.itemSelected]); i++)
+                        for (int i =0; i < WindowshopUtil.AcquireChromaCountOfSkin(WindowshopGlobals.rawShopItems[WindowshopGlobals.itemSelected]); i++)
                         {
                             // Create a new Button
                             Button chromaButton = new Button
@@ -213,7 +215,7 @@ namespace Windowshop
                         }
                     }
 
-                    for (int i = 0; i < Util.AcquireLevelsCountOfSkin(WindowshopGlobals.rawShopItems[WindowshopGlobals.itemSelected]); i++)
+                    for (int i = 0; i < WindowshopUtil.AcquireLevelsCountOfSkin(WindowshopGlobals.rawShopItems[WindowshopGlobals.itemSelected]); i++)
                     {
                         Button levelButton = new Button
                         {

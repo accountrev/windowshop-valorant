@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml.XPath;
+using Windowshop.Utility;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
-namespace Windowshop
+namespace Windowshop.WPF
 {
 
     public class WPFGlobalsBridge : ViewModelBase
@@ -31,15 +32,15 @@ namespace Windowshop
         private string loadingScreenStatus = "Starting...";
         private string loadingScreenVersionString = "Version " + WindowshopGlobals.version;
 
-        private BitmapImage item1Img = Util.LoadLocalImage("/Resources/no_item_placeholder.png");
-        private BitmapImage item2Img = Util.LoadLocalImage("/Resources/no_item_placeholder.png");
-        private BitmapImage item3Img = Util.LoadLocalImage("/Resources/no_item_placeholder.png");
-        private BitmapImage item4Img = Util.LoadLocalImage("/Resources/no_item_placeholder.png");
+        private BitmapImage item1Img = WindowshopUtil.LoadLocalImage("/Resources/no_item_placeholder.png");
+        private BitmapImage item2Img = WindowshopUtil.LoadLocalImage("/Resources/no_item_placeholder.png");
+        private BitmapImage item3Img = WindowshopUtil.LoadLocalImage("/Resources/no_item_placeholder.png");
+        private BitmapImage item4Img = WindowshopUtil.LoadLocalImage("/Resources/no_item_placeholder.png");
 
-        private BitmapImage item1RarityImg = Util.LoadLocalImage("/Resources/no_tier_placeholder.png");
-        private BitmapImage item2RarityImg = Util.LoadLocalImage("/Resources/no_tier_placeholder.png");
-        private BitmapImage item3RarityImg = Util.LoadLocalImage("/Resources/no_tier_placeholder.png");
-        private BitmapImage item4RarityImg = Util.LoadLocalImage("/Resources/no_tier_placeholder.png");
+        private BitmapImage item1RarityImg = WindowshopUtil.LoadLocalImage("/Resources/no_tier_placeholder.png");
+        private BitmapImage item2RarityImg = WindowshopUtil.LoadLocalImage("/Resources/no_tier_placeholder.png");
+        private BitmapImage item3RarityImg = WindowshopUtil.LoadLocalImage("/Resources/no_tier_placeholder.png");
+        private BitmapImage item4RarityImg = WindowshopUtil.LoadLocalImage("/Resources/no_tier_placeholder.png");
 
         private string item1RarityColor;
         private string item2RarityColor;
