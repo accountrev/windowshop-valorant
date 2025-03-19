@@ -1,13 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using Windowshop.Utility;
+﻿using Windowshop.Utility;
 
 namespace Windowshop.Helpers
 {

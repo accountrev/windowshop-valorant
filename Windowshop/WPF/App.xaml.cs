@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using Windowshop.Auth;
 using Windowshop.Helpers;
-using File = System.IO.File;
 
 namespace Windowshop
 {
@@ -49,7 +48,7 @@ namespace Windowshop
                 WindowshopAuth auth = new WindowshopAuth();
                 auth.Start();
             }
-            
+
             Setup setup = new Setup();
             await setup.Initialize();
 

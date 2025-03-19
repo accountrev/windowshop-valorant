@@ -1,18 +1,10 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Json;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
-using System.Windows.Media.Imaging;
-using System.Windows.Media;
 using System.IO;
-using System.Drawing;
 using System.Net;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Windows.Media.Imaging;
 using Windowshop.Helpers;
 
 namespace Windowshop.Utility

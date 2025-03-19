@@ -1,30 +1,19 @@
-﻿using System.ComponentModel;
-using System.Text;
+﻿using LibVLCSharp.Shared;
+using Microsoft.Toolkit.Uwp.Notifications;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Forms;
-using System.Drawing;
-using System.Diagnostics;
-using Microsoft.Toolkit.Uwp.Notifications;
 using System.Windows.Threading;
-using Windows.ApplicationModel.VoiceCommands;
-using Button = System.Windows.Controls.Button;
-using Image = System.Windows.Controls.Image;
-using System.Threading.Tasks;
-using Brushes = System.Windows.Media.Brushes;
-using Color = System.Windows.Media.Color;
-using Orientation = System.Windows.Controls.Orientation;
-using FontFamily = System.Windows.Media.FontFamily;
-using LibVLCSharp.Shared;
-using Windowshop.WPF;
 using Windowshop.Utility;
+using Windowshop.WPF;
+using Brushes = System.Windows.Media.Brushes;
+using Button = System.Windows.Controls.Button;
+using Color = System.Windows.Media.Color;
+using FontFamily = System.Windows.Media.FontFamily;
+using Image = System.Windows.Controls.Image;
+using Orientation = System.Windows.Controls.Orientation;
 
 namespace Windowshop
 {
@@ -98,7 +87,7 @@ namespace Windowshop
         {
             if (WindowState == WindowState.Minimized) Hide();
 
-            
+
 
             base.OnStateChanged(e);
         }
@@ -116,7 +105,7 @@ namespace Windowshop
 
         private void Button_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            
+
             System.Windows.MessageBox.Show("You clicked me at " + e.GetPosition(this).ToString());
         }
 
@@ -133,7 +122,7 @@ namespace Windowshop
             Item2Gradient.GradientStops.Clear();
             Item3Gradient.GradientStops.Clear();
             Item4Gradient.GradientStops.Clear();
-            
+
             Item1Gradient.GradientStops.Add(new GradientStop((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#00" + WindowshopGlobals.mainShopItems[0]["rarityColor"].ToString()), 0.3));
             Item1Gradient.GradientStops.Add(new GradientStop((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF" + WindowshopGlobals.mainShopItems[0]["rarityColor"].ToString()), 1.0));
 
@@ -192,7 +181,7 @@ namespace Windowshop
 
                     if (WindowshopUtil.AcquireChromaCountOfSkin(WindowshopGlobals.rawShopItems[WindowshopGlobals.itemSelected]) > 1)
                     {
-                        for (int i =0; i < WindowshopUtil.AcquireChromaCountOfSkin(WindowshopGlobals.rawShopItems[WindowshopGlobals.itemSelected]); i++)
+                        for (int i = 0; i < WindowshopUtil.AcquireChromaCountOfSkin(WindowshopGlobals.rawShopItems[WindowshopGlobals.itemSelected]); i++)
                         {
                             // Create a new Button
                             Button chromaButton = new Button
@@ -204,7 +193,7 @@ namespace Windowshop
                                 {
                                     Source = WindowshopGlobals.mainShopItems[WindowshopGlobals.itemSelected]["chromas"][i]
                                 },
-                            
+
                             };
 
                             chromaButton.Click += SelectItemChroma;
@@ -261,7 +250,7 @@ namespace Windowshop
 
                         if (i > 0)
                         {
-                            levelButton.Margin = new Thickness(0,8,0,0);
+                            levelButton.Margin = new Thickness(0, 8, 0, 0);
                         }
 
                         levelButton.Click += SelectItemLevel;
@@ -304,7 +293,7 @@ namespace Windowshop
             var button = sender as System.Windows.Controls.Button;
             var argument = int.Parse(button.Tag as string);
 
-                
+
             WindowshopGlobals.chromaSelected = argument;
             WindowshopGlobals.lookingAtChromas = true;
 

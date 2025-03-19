@@ -11,10 +11,10 @@
         Icon="/Resources/windowshop-preview.ico">
 
     <Window.Resources>
-        <FontFamily x:Key="TungstenBold">pack://application:,,,/Resources/Tungsten-Bold.ttf#Tungsten Bold</FontFamily>
-        <FontFamily x:Key="DINNextRegular">pack://application:,,,/Resources/DIN-Next-Regular.otf#DIN Next W1G</FontFamily>
-        <FontFamily x:Key="DINNextMedium">pack://application:,,,/Resources/DIN-Next-Medium.otf#DIN Next W1G Medium</FontFamily>
-        <FontFamily x:Key="DINNextLight">pack://application:,,,/Resources/DIN-Next-Light.otf#DIN Next W1G Light</FontFamily>
+        <FontFamily x:Key="TungstenBold">pack://application:,,,/Resources/Fonts/Tungsten-Bold.ttf#Tungsten Bold</FontFamily>
+        <FontFamily x:Key="DINNextRegular">pack://application:,,,/Resources/Fonts/DIN-Next-Regular.otf#DIN Next W1G</FontFamily>
+        <FontFamily x:Key="DINNextMedium">pack://application:,,,/Resources/Fonts/DIN-Next-Medium.otf#DIN Next W1G Medium</FontFamily>
+        <FontFamily x:Key="DINNextLight">pack://application:,,,/Resources/Fonts/DIN-Next-Light.otf#DIN Next W1G Light</FontFamily>
 
         <Style x:Key="ItemButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent"/>
