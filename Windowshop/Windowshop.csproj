@@ -87,7 +87,7 @@
     <Content Include="Resources\swatch.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Tungsten-Bold.ttf">
+    <Content Include="Resources\Fonts\Tungsten-Bold.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Ultra_Edition.png">
@@ -113,13 +113,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\DIN-Next-Regular.otf">
+    <Resource Include="Resources\Fonts\DIN-Next-Regular.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\DIN-Next-Light.otf">
+    <Resource Include="Resources\Fonts\DIN-Next-Light.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\DIN-Next-Medium.otf">
+    <Resource Include="Resources\Fonts\DIN-Next-Medium.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
