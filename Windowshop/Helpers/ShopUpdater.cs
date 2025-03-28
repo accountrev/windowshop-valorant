@@ -1,16 +1,10 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Windowshop.Utility;
 
-namespace Windowshop
+namespace Windowshop.Helpers
 {
     class ShopUpdater
     {
@@ -24,7 +18,7 @@ namespace Windowshop
 
                 Timer();
 
-                await Task.Delay((WindowshopGlobals.nextShopReset * 1000) + 10000);
+                await Task.Delay(WindowshopGlobals.nextShopReset * 1000 + 10000);
             }
         }
 
@@ -48,7 +42,7 @@ namespace Windowshop
             WindowshopGlobals.rawShopItems.Clear();
 
             // Get shop
-            WindowshopGlobals.shopData = await Util.AcquireShopV3();
+            WindowshopGlobals.shopData = await WindowshopUtil.AcquireShopV3();
 
             try
             {
@@ -60,12 +54,12 @@ namespace Windowshop
                 foreach (var offer in singleItemStoreOffers)
                 {
                     string offerID = offer["OfferID"].ToString();
-                    JObject skin = Util.AcquireSkinFromOfferID(offerID);
+                    JObject skin = WindowshopUtil.AcquireSkinFromOfferID(offerID);
 
                     WindowshopGlobals.rawShopItems.Add(skin);
 
-                    string name = Util.AcquireNameOfSkin(skin);
-                    string id = Util.AcquireIDFromSkin(skin);
+                    string name = WindowshopUtil.AcquireNameOfSkin(skin);
+                    string id = WindowshopUtil.AcquireIDFromSkin(skin);
                     int cost = (int)offer["Cost"]["85ad13f7-3d1b-5128-9eb2-7cd8ee0b5741"];
 
 
@@ -74,20 +68,20 @@ namespace Windowshop
 
                     // set up images
                     List<BitmapImage> chromaImages = new List<BitmapImage>();
-                    for (int i = 0; i < Util.AcquireChromaCountOfSkin(skin); i++)
+                    for (int i = 0; i < WindowshopUtil.AcquireChromaCountOfSkin(skin); i++)
                     {
-                        chromaImages.Add(await Util.AcquireImageOfSkin(skin, i));
+                        chromaImages.Add(await WindowshopUtil.AcquireImageOfSkin(skin, i));
                     }
 
                     List<BitmapImage> levelImages = new List<BitmapImage>();
-                    for (int i = 0; i < Util.AcquireLevelsCountOfSkin(skin); i++)
+                    for (int i = 0; i < WindowshopUtil.AcquireLevelsCountOfSkin(skin); i++)
                     {
-                        levelImages.Add(await Util.AcquireImageOfSkin(skin, 0, i));
+                        levelImages.Add(await WindowshopUtil.AcquireImageOfSkin(skin, 0, i));
                     }
 
-                    Dictionary <string, dynamic> images = new Dictionary<string, dynamic>()
+                    Dictionary<string, dynamic> images = new Dictionary<string, dynamic>()
                     {
-                        {"default", await Util.AcquireImageOfSkin(skin)},
+                        {"default", await WindowshopUtil.AcquireImageOfSkin(skin)},
                         {"chromas", chromaImages},
                         {"levels", levelImages}
                     };
@@ -97,20 +91,20 @@ namespace Windowshop
 
                     // set up names
                     List<string> chromaNames = new List<string>();
-                    for (int i = 0; i < Util.AcquireChromaCountOfSkin(skin); i++)
+                    for (int i = 0; i < WindowshopUtil.AcquireChromaCountOfSkin(skin); i++)
                     {
-                        chromaNames.Add(Util.AcquireNameOfSkin(skin, i));
+                        chromaNames.Add(WindowshopUtil.AcquireNameOfSkin(skin, i));
                     }
 
                     List<string> levelNames = new List<string>();
-                    for (int i = 0; i < Util.AcquireLevelsCountOfSkin(skin); i++)
+                    for (int i = 0; i < WindowshopUtil.AcquireLevelsCountOfSkin(skin); i++)
                     {
-                        levelNames.Add(Util.AcquireNameOfSkin(skin, 0, i));
+                        levelNames.Add(WindowshopUtil.AcquireNameOfSkin(skin, 0, i));
                     }
 
                     Dictionary<string, dynamic> names = new Dictionary<string, dynamic>()
                     {
-                        {"default", Util.AcquireNameOfSkin(skin)},
+                        {"default", WindowshopUtil.AcquireNameOfSkin(skin)},
                         {"chromas", chromaNames},
                         {"levels", levelNames}
                     };
@@ -119,20 +113,20 @@ namespace Windowshop
 
                     // set up levels
                     List<string> levels = new List<string>();
-                    Trace.WriteLine(Util.AcquireLevelsCountOfSkin(skin));
-                    for (int i = 0; i < Util.AcquireLevelsCountOfSkin(skin); i++)
+                    Trace.WriteLine(WindowshopUtil.AcquireLevelsCountOfSkin(skin));
+                    for (int i = 0; i < WindowshopUtil.AcquireLevelsCountOfSkin(skin); i++)
                     {
                         Trace.WriteLine(i);
-                        levels.Add(Util.AcquireLevelNameOfSkin(skin, i));
+                        levels.Add(WindowshopUtil.AcquireLevelNameOfSkin(skin, i));
                     }
 
 
                     // set up chroma swatches
                     List<BitmapImage> chromaSwatches = new List<BitmapImage>();
 
-                    for (int i = 0; i < Util.AcquireChromaCountOfSkin(skin); i++)
+                    for (int i = 0; i < WindowshopUtil.AcquireChromaCountOfSkin(skin); i++)
                     {
-                        chromaSwatches.Add(await Util.AcquireChromaSwatchOfSkin(skin, i));
+                        chromaSwatches.Add(await WindowshopUtil.AcquireChromaSwatchOfSkin(skin, i));
                     }
 
 
@@ -140,18 +134,18 @@ namespace Windowshop
 
                     List<string> chromaVideos = new List<string>();
 
-                    for (int i = 0; i < Util.AcquireChromaCountOfSkin(skin); i++)
+                    for (int i = 0; i < WindowshopUtil.AcquireChromaCountOfSkin(skin); i++)
                     {
-                        chromaVideos.Add(Util.AcquireVideoURLOfSkin(skin, true, i));
+                        chromaVideos.Add(WindowshopUtil.AcquireVideoURLOfSkin(skin, true, i));
                     }
 
                     List<string> levelsVideos = new List<string>();
 
-                    for (int i = 0; i < Util.AcquireLevelsCountOfSkin(skin); i++)
+                    for (int i = 0; i < WindowshopUtil.AcquireLevelsCountOfSkin(skin); i++)
                     {
-                        levelsVideos.Add(Util.AcquireVideoURLOfSkin(skin, false, i));
+                        levelsVideos.Add(WindowshopUtil.AcquireVideoURLOfSkin(skin, false, i));
                     }
-                    
+
                     Dictionary<string, dynamic> videos = new Dictionary<string, dynamic>()
                     {
                         {"chromas", chromaVideos},
@@ -159,10 +153,10 @@ namespace Windowshop
                     };
 
 
-                    string rarity = Util.AcquireRarityNameOfSkin(skin);
+                    string rarity = WindowshopUtil.AcquireRarityNameOfSkin(skin);
 
-                    BitmapImage rarityImg = await Util.AcquireRarityImgFromRarityName(rarity);
-                    string rarityColor = Util.AcquireRarityColorFromRarityName(rarity);
+                    BitmapImage rarityImg = await WindowshopUtil.AcquireRarityImgFromRarityName(rarity);
+                    string rarityColor = WindowshopUtil.AcquireRarityColorFromRarityName(rarity);
 
                     WindowshopGlobals.mainShopItems.Add(
                         new Dictionary<string, dynamic>()

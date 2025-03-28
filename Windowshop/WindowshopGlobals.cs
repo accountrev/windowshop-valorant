@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Windowshop
 {
@@ -36,7 +31,7 @@ namespace Windowshop
         public static string riotIdToken { get; set; }
         public static string entitlementsToken { get; set; }
         public static string puuid { get; set; }
-        public static string shard {  get; set; }
+        public static string shard { get; set; }
 
 
         // Shop related variables

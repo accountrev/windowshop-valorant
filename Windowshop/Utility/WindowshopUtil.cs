@@ -1,22 +1,15 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Json;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
-using System.Windows.Media.Imaging;
-using System.Windows.Media;
 using System.IO;
-using System.Drawing;
 using System.Net;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Windows.Media.Imaging;
+using Windowshop.Helpers;
 
-namespace Windowshop
+namespace Windowshop.Utility
 {
-    internal class Util
+    internal class WindowshopUtil
     {
         private static HttpClient client = new HttpClient();
 
@@ -93,7 +86,7 @@ namespace Windowshop
                 ErrorHandler.ThrowAndExit("Something went wrong when fetching puuid data from Riot. Make sure you're connected to the internet and try again.", e.ToString());
                 return "";
             }
-            
+
         }
 
         public async static Task<JObject> AcquireShopV3(bool debug = false)
@@ -114,7 +107,7 @@ namespace Windowshop
                 return null;
             }
 
-            
+
             try
             {
                 HttpRequestMessage msg_shop = new HttpRequestMessage(HttpMethod.Post, $"https://pd.{WindowshopGlobals.shard}.a.pvp.net/store/v3/storefront/{WindowshopGlobals.puuid}");
@@ -143,7 +136,7 @@ namespace Windowshop
                 ErrorHandler.ThrowAndExit("Something went wrong when fetching shop data from Riot. Make sure you're connected to the internet and try again.", e.ToString());
                 return null;
             }
-            
+
         }
 
         public static async Task<string> AcquireShard()
@@ -512,7 +505,7 @@ namespace Windowshop
                 byte[] imageData = await response_skin_img.Content.ReadAsByteArrayAsync();
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
-                bitmap.StreamSource = new System.IO.MemoryStream(imageData);
+                bitmap.StreamSource = new MemoryStream(imageData);
                 bitmap.CacheOption = BitmapCacheOption.OnLoad;
                 bitmap.EndInit();
 
@@ -522,7 +515,7 @@ namespace Windowshop
             {
                 ErrorHandler.ThrowAndExit("Something went wrong when fetching skin image data online. Make sure you're connected to the internet and try again.", e.ToString());
                 return null;
-            } 
+            }
         }
 
         public static string AcquireVideoURLOfSkin(JObject skin, bool isChroma = false, int index = 0)
@@ -616,8 +609,8 @@ namespace Windowshop
                     fullSkinLevel = skin["levels"][level]["levelItem"].ToString();
                     skinLevel = fullSkinLevel.Split("::")[1];
                 }
-                    
-                
+
+
             }
 
             return skinLevel;
@@ -644,7 +637,7 @@ namespace Windowshop
                     return bitmap;
                 }
             }
-                
+
             else
             {
                 ErrorHandler.ThrowAndExit("Something went wrong with skin JObject for chroma swatch.", "JObject does not contain chromas key.");
@@ -659,7 +652,7 @@ namespace Windowshop
                 byte[] imageData = await response_swatch_img.Content.ReadAsByteArrayAsync();
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
-                bitmap.StreamSource = new System.IO.MemoryStream(imageData);
+                bitmap.StreamSource = new MemoryStream(imageData);
                 bitmap.CacheOption = BitmapCacheOption.OnLoad;
                 bitmap.EndInit();
 

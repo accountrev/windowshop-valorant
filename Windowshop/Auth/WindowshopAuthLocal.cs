@@ -1,13 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Windowshop.Helpers;
+using Windowshop.Utility;
 
-namespace Windowshop
+namespace Windowshop.Auth
 {
     internal class WindowshopAuthLocal
     {
@@ -20,7 +15,7 @@ namespace Windowshop
                 string json = AppDataHandler.ReadFile("riot_tokens_DO_NOT_SHARE");
                 WindowshopGlobals.riotAccountTokens = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
 
-                await Util.RefreshToken();
+                await WindowshopUtil.RefreshToken();
             }
             else
             {

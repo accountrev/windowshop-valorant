@@ -1,5 +1,6 @@
 ﻿using System.Windows;
-using File = System.IO.File;
+using Windowshop.Auth;
+using Windowshop.Helpers;
 
 namespace Windowshop
 {
@@ -18,6 +19,10 @@ namespace Windowshop
             {
                 ErrorHandler.ThrowAndExit("Windowshop is already running! Please check your system tray to open Windowshop.");
             }
+
+            var githubChecker = new GithubChecker();
+            await githubChecker.CheckForUpdates();
+
 
             AppDataHandler.CreateAppDataFolder();
 
@@ -47,7 +52,7 @@ namespace Windowshop
                 WindowshopAuth auth = new WindowshopAuth();
                 auth.Start();
             }
-            
+
             Setup setup = new Setup();
             await setup.Initialize();
 

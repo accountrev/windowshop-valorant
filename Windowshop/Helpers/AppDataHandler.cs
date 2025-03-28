@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
-namespace Windowshop
+namespace Windowshop.Helpers
 {
     internal class AppDataHandler
     {
@@ -42,7 +36,7 @@ namespace Windowshop
                 {
                     ErrorHandler.ThrowAndExit("Failed to create AppData folder. Try running Windowshop with administrative privileges.", e.ToString());
                 }
-                
+
             }
         }
 

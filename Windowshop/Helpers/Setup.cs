@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using System.Net.Http;
+using Windowshop.Utility;
 
-namespace Windowshop
+namespace Windowshop.Helpers
 {
     internal partial class Setup
     {
@@ -18,7 +18,7 @@ namespace Windowshop
                 using (StreamReader sr = new StreamReader(AppDataHandler.PathToFile("valorant_manifest")))
                 {
                     var oldManifest = sr.ReadToEnd();
-                    var newManifest = await Util.AcquireValorantManifest();
+                    var newManifest = await WindowshopUtil.AcquireValorantManifest();
 
                     sr.Close();
 
@@ -30,7 +30,7 @@ namespace Windowshop
                         updateNeeded = true;
                         using (StreamWriter sw = new StreamWriter(AppDataHandler.PathToFile("valorant_manifest")))
                         {
-                            string manifest = await Util.AcquireValorantManifest();
+                            string manifest = await WindowshopUtil.AcquireValorantManifest();
                             sw.Write(manifest);
                             sw.Close();
                         }
@@ -46,7 +46,7 @@ namespace Windowshop
 
                 using (StreamWriter sw = new StreamWriter(AppDataHandler.PathToFile("valorant_manifest")))
                 {
-                    string manifest = await Util.AcquireValorantManifest();
+                    string manifest = await WindowshopUtil.AcquireValorantManifest();
                     sw.Write(manifest);
                     sw.Close();
                 }
@@ -60,7 +60,7 @@ namespace Windowshop
                 using (StreamWriter sw = new StreamWriter(AppDataHandler.PathToFile("valorant_skins_data.json")))
                 {
                     // download the entire valorant skin api
-                    var skinData = await Util.AcquireValorantSkinsData();
+                    var skinData = await WindowshopUtil.AcquireValorantSkinsData();
                     sw.Write(skinData);
                     sw.Close();
                 }
@@ -70,7 +70,7 @@ namespace Windowshop
                 using (StreamWriter sw = new StreamWriter(AppDataHandler.PathToFile("valorant_content_tiers_data.json")))
                 {
                     // download the entire valorant skin api
-                    var contentTierData = await Util.AcquireValorantContentTiersData();
+                    var contentTierData = await WindowshopUtil.AcquireValorantContentTiersData();
                     sw.Write(contentTierData);
                     sw.Close();
                 }
@@ -79,22 +79,22 @@ namespace Windowshop
 
             // after log in user, get entitlements
             WindowshopGlobals.loadingScreen.GetViewModel().ChangeLoadingScreenStatus("Getting entitlements (3/5)...");
-            WindowshopGlobals.entitlementsToken = await Util.AcquireEntitlementsToken();
+            WindowshopGlobals.entitlementsToken = await WindowshopUtil.AcquireEntitlementsToken();
 
             // get puuid after entitlements
             WindowshopGlobals.loadingScreen.GetViewModel().ChangeLoadingScreenStatus("Getting player UUID (4/5)...");
-            WindowshopGlobals.puuid = await Util.AcquirePUUID();
+            WindowshopGlobals.puuid = await WindowshopUtil.AcquirePUUID();
 
             // get shard
             WindowshopGlobals.loadingScreen.GetViewModel().ChangeLoadingScreenStatus("Getting player shard (5/5)...");
-            WindowshopGlobals.shard = await Util.AcquireShard();
+            WindowshopGlobals.shard = await WindowshopUtil.AcquireShard();
 
             WindowshopGlobals.loadingScreen.GetViewModel().ChangeLoadingScreenStatus("Starting app and other dependencies...");
         }
 
 
 
-        
+
 
 
 
