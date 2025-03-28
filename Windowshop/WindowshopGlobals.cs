@@ -4,7 +4,7 @@ namespace Windowshop
 {
     public static class WindowshopGlobals
     {
-        public static string version = "0.9.0";
+        public static string version = "0.9.1.1";
 
 
         // Main window reference
