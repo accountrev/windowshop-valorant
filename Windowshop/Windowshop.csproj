@@ -9,7 +9,7 @@
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Resources\windowshop-preview.ico</ApplicationIcon>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <None Remove="RESET AUTOSTART SETTINGS.bat" />
     <None Remove="RESET WINDOWSHOP DATA.bat" />

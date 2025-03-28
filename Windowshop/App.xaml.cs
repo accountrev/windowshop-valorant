@@ -20,6 +20,10 @@ namespace Windowshop
                 ErrorHandler.ThrowAndExit("Windowshop is already running! Please check your system tray to open Windowshop.");
             }
 
+            var githubChecker = new GithubChecker();
+            await githubChecker.CheckForUpdates();
+
+
             AppDataHandler.CreateAppDataFolder();
 
             bool isStartupLaunch = e.Args.Contains("--startup");
